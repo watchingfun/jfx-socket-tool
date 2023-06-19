@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.*?>
+<?import atlantafx.base.layout.InputGroup?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import java.lang.*?>
+<AnchorPane fx:id="root" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jfx.controller.MainController">
+    <SplitPane dividerPositions="0.5" layoutX="-133.0" layoutY="14.0" orientation="VERTICAL"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="0.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <Card prefHeight="20.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <header>
+                    <AnchorPane maxHeight="20" minHeight="20" prefHeight="20">
+                        <Label text="接收">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="themeSwitchButton" AnchorPane.rightAnchor="0.0">
+                            <graphic>
+                                <FontIcon iconLiteral="mdi2t-theme-light-dark" iconSize="20"/>
+                            </graphic>
+                        </Button>
+                    </AnchorPane>
+                </header>
+                <body>
+                    <AnchorPane>
+                        <HBox>
+                            <InputGroup>
+                                <Label text="连接方式："/>
+                                <ComboBox prefWidth="140" value="TCP CLIENT" fx:id="acceptMethod">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="TCP CLIENT"/>
+                                            <String fx:value="TCP SERVER"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label text="IP"/>
+                                <CustomTextField fx:id="acceptIP" promptText="IP Address" prefWidth="140"/>
+                                <ComboBox fx:id="acceptBindIP" managed="false" prefWidth="140" value="0.0.0.0"
+                                          visible="false">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="127.0.0.1"/>
+                                            <String fx:value="0.0.0.0"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label text="PORT"/>
+                                <CustomTextField prefWidth="100" promptText="PORT" fx:id="acceptPort"/>
+                                <Button mnemonicParsing="false" text="启动" fx:id="acceptBtn">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2p-play" iconSize="20"/>
+                                    </graphic>
+                                </Button>
+                            </InputGroup>
+                        </HBox>
+                        <TextArea prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" fx:id="acceptTextArea"
+                                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0"/>
+                    </AnchorPane>
+                </body>
+            </Card>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <Card prefHeight="20.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <header>
+                    <Label text="转发">
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Label>
+                </header>
+                <body>
+                    <AnchorPane>
+                        <HBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <InputGroup maxWidth="Infinity" HBox.hgrow="ALWAYS">
+                                <Label text="连接方式："/>
+                                <ComboBox fx:id="forwardingMethod" prefWidth="140" value="TCP CLIENT">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="TCP CLIENT"/>
+                                            <String fx:value="TCP SERVER"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label text="IP"/>
+                                <CustomTextField fx:id="forwardingIP" promptText="IP Address" prefWidth="140"/>
+                                <ComboBox fx:id="forwardingBindIP" managed="false" prefWidth="140" value="0.0.0.0"
+                                          visible="false">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="127.0.0.1"/>
+                                            <String fx:value="0.0.0.0"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label text="PORT"/>
+                                <CustomTextField prefWidth="100" promptText="PORT" fx:id="forwardingPort"/>
+                                <Button mnemonicParsing="false" text="启动" fx:id="forwardingBtn">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2p-play" iconSize="20"/>
+                                    </graphic>
+                                </Button>
+                            </InputGroup>
+                            <AnchorPane maxWidth="Infinity" nodeOrientation="RIGHT_TO_LEFT" HBox.hgrow="ALWAYS">
+                                <Button fx:id="dataConvertConfigButton" contentDisplay="RIGHT" text="数据转换配置">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2c-cog" iconSize="20"/>
+                                    </graphic>
+                                </Button>
+                            </AnchorPane>
+                        </HBox>
+                        <TextArea prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" fx:id="forwardingTextArea"
+                                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0"/>
+                    </AnchorPane>
+                </body>
+            </Card>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </AnchorPane>
+    </SplitPane>
+</AnchorPane>
